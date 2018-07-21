@@ -11,6 +11,13 @@ const baseWebpackConfig = require('./webpack.base.conf')
 
 const env = config.build.env
 
+const dotenv = require('dotenv').config().parsed
+
+const formatEnv = Object.keys(dotenv).reduce((obj, key) => {
+  obj[key] = JSON.stringify(dotenv[key])
+  return obj
+}, config.build.env)
+
 const webpackConfig = merge(baseWebpackConfig, {
   module: {
     rules: utils.styleLoaders({
@@ -22,7 +29,7 @@ const webpackConfig = merge(baseWebpackConfig, {
   plugins: [
     // http://vuejs.github.io/vue-loader/en/workflow/production.html
     new webpack.DefinePlugin({
-      'process.env': env
+      'process.env': config.build.env
     }),
     new UglifyJsPlugin({
       sourceMap: true

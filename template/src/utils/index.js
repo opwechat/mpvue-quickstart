@@ -12,7 +12,7 @@ export function formatTime{{#unless_eq lintConfig "airbnb"}} {{/unless_eq}}(date
   const minute = date.getMinutes(){{#if_eq lintConfig "airbnb"}};{{/if_eq}}
   const second = date.getSeconds(){{#if_eq lintConfig "airbnb"}};{{/if_eq}}
 
-  const t1 = [year, month, day].map(formatNumber).join('/'){{#if_eq lintConfig "airbnb"}};{{/if_eq}}
+  const t1 = [year, month, day].map(formatNumber).join('-'){{#if_eq lintConfig "airbnb"}};{{/if_eq}}
   const t2 = [hour, minute, second].map(formatNumber).join(':'){{#if_eq lintConfig "airbnb"}};{{/if_eq}}
 
   return `${t1} ${t2}`{{#if_eq lintConfig "airbnb"}};{{/if_eq}}

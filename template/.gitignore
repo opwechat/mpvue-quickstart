@@ -1,4 +1,5 @@
 .DS_Store
+.DBStore/
 node_modules/
 dist/
 npm-debug.log*
@@ -11,3 +12,5 @@ yarn-error.log*
 *.ntvs*
 *.njsproj
 *.sln
+.env
+.env.local

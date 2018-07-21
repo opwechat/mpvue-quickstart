@@ -11,6 +11,15 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
 const OptimizeCSSPlugin = require('optimize-css-assets-webpack-plugin')
 
+const dotenv = require('dotenv').config({
+  path: '.env.local'
+}).parsed
+
+const formatEnv = Object.keys(dotenv).reduce((obj, key) => {
+  obj[key] = JSON.stringify(dotenv[key])
+  return obj
+}, config.dev.env)
+
 module.exports = merge(baseWebpackConfig, {
   module: {
     rules: utils.styleLoaders({

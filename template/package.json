@@ -11,6 +11,8 @@
     "lint": "eslint --ext .js,.vue src"{{/lint}}
   },
   "dependencies": {
+    "dotenv": "^6.0.0",
+    "flyio": "^0.6.0",
     "mpvue": "^1.0.0"{{#vuex}},
     "vuex": "^3.0.0"{{/vuex}}
   },

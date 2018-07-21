@@ -4,7 +4,8 @@ module.exports = [
   },{{#vuex}} {
     path: 'pages/counter'{{#if_eq lintConfig "airbnb"}},{{/if_eq}}
   },{{/vuex}} {
-    path: 'packageA/logs',
+    path: 'packages/package/logs',
+    root: 'packages/package',
     subPackage: true,
     config: { // 页面配置，即 page.json 的内容
       navigationBarTitleText: '查看启动日志'{{#if_eq lintConfig "airbnb"}},{{/if_eq}}
