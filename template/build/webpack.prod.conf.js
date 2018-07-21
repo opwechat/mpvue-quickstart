@@ -13,7 +13,7 @@ const env = config.build.env
 
 const dotenv = require('dotenv').config().parsed
 
-const formatEnv = Object.keys(dotenv).reduce((obj, key) => {
+Object.keys(dotenv).reduce((obj, key) => {
   obj[key] = JSON.stringify(dotenv[key])
   return obj
 }, config.build.env)

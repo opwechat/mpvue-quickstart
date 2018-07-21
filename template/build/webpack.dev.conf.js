@@ -15,7 +15,7 @@ const dotenv = require('dotenv').config({
   path: '.env.local'
 }).parsed
 
-const formatEnv = Object.keys(dotenv).reduce((obj, key) => {
+Object.keys(dotenv).reduce((obj, key) => {
   obj[key] = JSON.stringify(dotenv[key])
   return obj
 }, config.dev.env)
