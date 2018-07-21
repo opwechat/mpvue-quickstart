@@ -15,10 +15,12 @@ const dotenv = require('dotenv').config({
   path: '.env.local'
 }).parsed
 
-Object.keys(dotenv).reduce((obj, key) => {
-  obj[key] = JSON.stringify(dotenv[key])
-  return obj
-}, config.dev.env)
+if (dotenv) {
+  Object.keys(dotenv).reduce((obj, key) => {
+    obj[key] = JSON.stringify(dotenv[key])
+    return obj
+  }, config.dev.env)
+}
 
 module.exports = merge(baseWebpackConfig, {
   module: {

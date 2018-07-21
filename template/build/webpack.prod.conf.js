@@ -13,10 +13,12 @@ const env = config.build.env
 
 const dotenv = require('dotenv').config().parsed
 
-Object.keys(dotenv).reduce((obj, key) => {
-  obj[key] = JSON.stringify(dotenv[key])
-  return obj
-}, config.build.env)
+if (dotenv) {
+  Object.keys(dotenv).reduce((obj, key) => {
+    obj[key] = JSON.stringify(dotenv[key])
+    return obj
+  }, config.build.env)
+}
 
 const webpackConfig = merge(baseWebpackConfig, {
   module: {
