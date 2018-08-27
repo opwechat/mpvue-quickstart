@@ -13,6 +13,7 @@
   "dependencies": {
     "dotenv": "^6.0.0",
     "flyio": "^0.6.0",
+    "vuex-persistedstate": "^2.5.4",
     "mpvue": "^1.0.0"{{#vuex}},
     "vuex": "^3.0.0"{{/vuex}}
   },
