@@ -18,6 +18,44 @@ export function formatTime{{#unless_eq lintConfig "airbnb"}} {{/unless_eq}}(date
   return `${t1} ${t2}`{{#if_eq lintConfig "airbnb"}};{{/if_eq}}
 }
 
+export function authorize{{#unless_eq lintConfig "airbnb"}} {{/unless_eq}}(scope) {
+  return new Promise((resolve, reject) => {
+    wx.getSetting({
+      success{{#unless_eq lintConfig "airbnb"}} {{/unless_eq}}(auth) {
+        if (!auth.authSetting[scope]) {
+          if (scope === 'scope.userInfo') {
+            resolve('scope.userinfo'){{#if_eq lintConfig "airbnb"}};{{/if_eq}}
+          } else {
+            wx.authorize({
+              scope,
+              success{{#unless_eq lintConfig "airbnb"}} {{/unless_eq}}() {
+                resolve(){{#if_eq lintConfig "airbnb"}};{{/if_eq}}
+              },
+              fail{{#unless_eq lintConfig "airbnb"}} {{/unless_eq}}(err) {
+                reject(Error(err)){{#if_eq lintConfig "airbnb"}};{{/if_eq}}
+              }{{#if_eq lintConfig "airbnb"}},{{/if_eq}}
+            }){{#if_eq lintConfig "airbnb"}};{{/if_eq}}
+          }
+        } else {
+          resolve(){{#if_eq lintConfig "airbnb"}};{{/if_eq}}
+        }
+      },
+      fail{{#unless_eq lintConfig "airbnb"}} {{/unless_eq}}(err) {
+        reject(Error(err)){{#if_eq lintConfig "airbnb"}};{{/if_eq}}
+      }{{#if_eq lintConfig "airbnb"}},{{/if_eq}}
+    }){{#if_eq lintConfig "airbnb"}};{{/if_eq}}
+  }){{#if_eq lintConfig "airbnb"}};{{/if_eq}}
+}
+
+export function timeout{{#unless_eq lintConfig "airbnb"}} {{/unless_eq}}(seconds) {
+  const second = seconds || 0{{#if_eq lintConfig "airbnb"}};{{/if_eq}}
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      resolve(){{#if_eq lintConfig "airbnb"}};{{/if_eq}}
+    }, second){{#if_eq lintConfig "airbnb"}};{{/if_eq}}
+  }){{#if_eq lintConfig "airbnb"}};{{/if_eq}}
+}
+
 export default {
   formatNumber,
   formatTime{{#if_eq lintConfig "airbnb"}},{{/if_eq}}

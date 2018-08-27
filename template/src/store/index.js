@@ -2,6 +2,7 @@
 // make sure to call Vue.use(Vuex) if using a module system
 import Vue from 'vue'{{#if_eq lintConfig "airbnb"}};{{/if_eq}}
 import Vuex from 'vuex'{{#if_eq lintConfig "airbnb"}};{{/if_eq}}
+import createPersistedState from 'vuex-persistedstate'{{#if_eq lintConfig "airbnb"}};{{/if_eq}}
 import mutations from './mutations'{{#if_eq lintConfig "airbnb"}};{{/if_eq}}
 import actions from './actions'{{#if_eq lintConfig "airbnb"}};{{/if_eq}}
 import state from './states'{{#if_eq lintConfig "airbnb"}};{{/if_eq}}
@@ -13,6 +14,15 @@ const store = new Vuex.Store({
   state,
   getters,
   actions,
+  plugins: [
+    createPersistedState({
+      storage: {
+        getItem: key => wx.getStorageSync(key),
+        setItem: (key, value) => wx.setStorage({ key, data: value }),
+        removeItem: () => {}{{#if_eq lintConfig "airbnb"}},{{/if_eq}}
+      }{{#if_eq lintConfig "airbnb"}},{{/if_eq}}
+    }){{#if_eq lintConfig "airbnb"}},{{/if_eq}}
+  ],
   mutations{{#if_eq lintConfig "airbnb"}},{{/if_eq}}
 }){{#if_eq lintConfig "airbnb"}};{{/if_eq}}
 
