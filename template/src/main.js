@@ -4,7 +4,11 @@ import App from '@/App'{{#if_eq lintConfig "airbnb"}};{{/if_eq}}
 import store from '@/store'{{#if_eq lintConfig "airbnb"}};{{/if_eq}}
 {{/vuex}}
 import api from '@/services'{{#if_eq lintConfig "airbnb"}};{{/if_eq}}
-import {{{#unless_eq lintConfig "airbnb"}} {{/unless_eq}}timeout, authorize{{#unless_eq lintConfig "airbnb"}} {{/unless_eq}}} from '@/utils'{{#if_eq lintConfig "airbnb"}};{{/if_eq}}
+{{#if_eq lintConfig "airbnb"}}
+import { timeout, authorize } from '@/utils'{{#if_eq lintConfig "airbnb"}};{{/if_eq}}
+{{else}}
+import {timeout, authorize} from '@/utils'{{#if_eq lintConfig "airbnb"}};{{/if_eq}}
+{{/if_eq}}
 
 Vue.config.productionTip = false{{#if_eq lintConfig "airbnb"}};{{/if_eq}}
 {{#vuex}}
